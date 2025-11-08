@@ -1,1 +1,8 @@
 pandas>=2.0.0
+matplotlib>=3.7.0
+scikit-learn>=1.2.0
+requests>=2.28.0
+PyMuPDF>=1.22.5
+tqdm>=4.67.0
+spacy>=3.6.0
+sentence-transformers>=2.2.2

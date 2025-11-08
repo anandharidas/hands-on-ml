@@ -2,6 +2,7 @@ from pathlib import Path
 import pandas as pd
 import tarfile
 import urllib.request 
+import matplotlib.pyplot as plt
 
 def load_housing_data():
     tarball_path = Path("datasets/housing.tgz")
@@ -16,3 +17,7 @@ def load_housing_data():
 
 housing = load_housing_data();
 print(housing.head())
+#print(housing.info())
+print(housing["ocean_proximity"].value_counts)
+housing.hist(bins=50, figsize=(20, 15))
+plt.show()

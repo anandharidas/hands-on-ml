@@ -17,6 +17,10 @@ datasets/
 *.tgz
 *.gz
 
+# Temporary files
+tempCodeRunnerFile.py
+*CodeRunnerFile.py
+
 # IDE
 .vscode/
 .idea/
