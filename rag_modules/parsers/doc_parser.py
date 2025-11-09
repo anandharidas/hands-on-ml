@@ -91,12 +91,16 @@ print(random.sample(pages_and_chunks_over_min_token_len,k=2))
 from sentence_transformers import SentenceTransformer
 embedding_model = SentenceTransformer(model_name_or_path = "all-mpnet-base-v2" , device="mps")
 
-a1 = [122,23,23433]
-a2 = [343,4354,33432,23,12132,12312]
-a = [a1, a2]
-tdf = pd.DataFrame(a)
-tdf_store= "tdf.csv"
-tdf.to_csv(tdf_store,index=False)
+embedding_model.to("mps")
 
-tdf_1 = pd.read_csv(tdf_store)
-print(tdf_1.head())
+for item in tqdm(pages_and_chunks_over_min_token_len):
+    item["embedding"] = embedding_model.encode(item["sentence_chunk"])
+
+text_chunks_and_embeddings_df = pd.DataFrame(pages_and_chunks_over_min_token_len)
+embedding_store_path = "text_chunks_and_embeddings.csv"
+text_chunks_and_embeddings_df.to_csv(embedding_store_path,index=False)
+
+text_chunks_and_embeddings_df_loaded = pd.read_csv(embedding_store_path)
+print(text_chunks_and_embeddings_df_loaded.head())
+print(text_chunks_and_embeddings_df_loaded.describe().round(2))
+
