@@ -31,3 +31,7 @@ tempCodeRunnerFile.py
 # OS
 .DS_Store
 Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb
